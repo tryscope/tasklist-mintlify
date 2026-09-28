@@ -1,0 +1,58 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Tasklist",
+  "description": "Lists, tasks, due dates and completion over a small HTTP API.",
+  "colors": {
+    "primary": "#0F766E",
+    "light": "#2DD4BF",
+    "dark": "#134E4A"
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Guides",
+        "groups": [
+          {
+            "group": "Get started",
+            "pages": ["index", "quickstart"]
+          },
+          {
+            "group": "Guides",
+            "pages": ["guides/authentication", "guides/lists-and-tasks", "guides/errors-and-limits"]
+          }
+        ]
+      },
+      {
+        "tab": "API reference",
+        "groups": [
+          {
+            "group": "Overview",
+            "pages": ["api-reference/introduction"]
+          }
+        ],
+        "openapi": "/openapi.json"
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      { "label": "Status", "href": "https://status.tasklist.example" }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Get an API token",
+      "href": "https://app.tasklist.example/settings/tokens"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/tasklist"
+    }
+  }
+}
