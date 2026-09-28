@@ -1,0 +1,58 @@
+---
+title: "Lists and tasks"
+description: "The two resources, their fields and how they relate."
+---
+
+## Lists
+
+A list is a named container for tasks.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `id` | string | Prefixed `lst_`. |
+| `name` | string | Required on create. |
+| `createdAt` | RFC 3339 timestamp | Set by the server. |
+
+Deleting a list also deletes every task in it. There is no undo.
+
+## Tasks
+
+A task belongs to exactly one list.
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `id` | string | Prefixed `tsk_`. |
+| `listId` | string | Must reference an existing list. |
+| `title` | string | Required on create. |
+| `notes` | string or null | Free text. |
+| `dueDate` | date or null | `YYYY-MM-DD`, no time zone. |
+| `status` | `open` or `done` | Changed only through the complete endpoint. |
+| `completedAt` | timestamp or null | Set when the task is completed. |
+
+<AccordionGroup>
+  <Accordion title="Why can't I set status directly?">
+    Completion is an event, not a field. `POST /tasks/{taskId}/complete` records `completedAt` at the same time, so the two never disagree. Completing an already done task returns `409`.
+  </Accordion>
+  <Accordion title="Can a task move between lists?">
+    Not in place. Create it in the new list and delete the old one.
+  </Accordion>
+  <Accordion title="How are due dates interpreted?">
+    As calendar dates in the account's time zone. The API never converts them.
+  </Accordion>
+</AccordionGroup>
+
+## Filtering tasks
+
+`GET /tasks` accepts `listId` and `status` as query parameters. Both are optional and combine with AND.
+
+<CodeGroup>
+```bash Open tasks in one list
+curl "https://api.tasklist.example/tasks?listId=lst_inbox&status=open" \
+  -H "Authorization: Bearer $TASKLIST_TOKEN"
+```
+
+```bash Everything that is done
+curl "https://api.tasklist.example/tasks?status=done" \
+  -H "Authorization: Bearer $TASKLIST_TOKEN"
+```
+</CodeGroup>

@@ -1,0 +1,29 @@
+---
+title: "Introduction"
+description: "What the Tasklist API does and how the pieces fit together."
+---
+
+Tasklist is a small HTTP API for keeping track of work: you create **lists**, add **tasks** to them, give tasks due dates, and mark them done. Everything is JSON over HTTPS and every request carries a bearer token.
+
+<CardGroup cols={2}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Create a list and a task in under five minutes.
+  </Card>
+  <Card title="Authentication" icon="key" href="/guides/authentication">
+    Get a token and send it on every request.
+  </Card>
+  <Card title="Lists and tasks" icon="list-check" href="/guides/lists-and-tasks">
+    The two resources and how they relate.
+  </Card>
+  <Card title="API reference" icon="code" href="/api-reference/introduction">
+    Every endpoint, parameter and response shape.
+  </Card>
+</CardGroup>
+
+## How it fits together
+
+A **list** is a named container. A **task** belongs to exactly one list and carries a title, optional notes, an optional due date and a status that is either `open` or `done`. Deleting a list deletes its tasks.
+
+<Note>
+The hosted API is at `https://api.tasklist.example`. When you run the server locally it listens on `http://localhost:4000`.
+</Note>

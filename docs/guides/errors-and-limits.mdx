@@ -1,0 +1,30 @@
+---
+title: "Errors and limits"
+description: "Error shape, status codes and rate limits."
+---
+
+Every error is a JSON object with a stable `code` and a human-readable `message`:
+
+```json
+{ "error": { "code": "validation_error", "message": "title is required." } }
+```
+
+| Status | Code | When |
+| --- | --- | --- |
+| `400` | `validation_error` | A required field is missing or a value has the wrong shape. |
+| `401` | `unauthenticated` | The bearer token is missing or malformed. |
+| `404` | `not_found` | No list or task with that id. |
+| `409` | `already_done` | The task was completed earlier. |
+| `429` | `rate_limited` | More than 600 requests in a minute from one token. |
+
+## Rate limits
+
+Each token may make **600 requests per minute**. Responses carry `X-RateLimit-Remaining` and `X-RateLimit-Reset` headers.
+
+<Warning>
+When you receive `429`, wait until the reset time before retrying. Retrying immediately extends the limit window.
+</Warning>
+
+<Note>
+The local development server enforces no rate limit.
+</Note>

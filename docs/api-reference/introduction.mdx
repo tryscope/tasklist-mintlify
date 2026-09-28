@@ -1,0 +1,29 @@
+---
+title: "API reference"
+description: "Base URL, conventions and the endpoint list."
+---
+
+The base URL is `https://api.tasklist.example`. All request and response bodies are JSON. Timestamps are RFC 3339 in UTC; dates are `YYYY-MM-DD`.
+
+Collections are wrapped in a `data` array:
+
+```json
+{ "data": [{ "id": "lst_inbox", "name": "Inbox", "createdAt": "2026-01-05T09:00:00Z" }] }
+```
+
+## Endpoints
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/lists` | List all lists |
+| `POST` | `/lists` | Create a list |
+| `GET` | `/lists/{listId}` | Get a list |
+| `DELETE` | `/lists/{listId}` | Delete a list and its tasks |
+| `GET` | `/tasks` | List tasks, filterable by list and status |
+| `POST` | `/tasks` | Create a task |
+| `GET` | `/tasks/{taskId}` | Get a task |
+| `PATCH` | `/tasks/{taskId}` | Update title, notes or due date |
+| `DELETE` | `/tasks/{taskId}` | Delete a task |
+| `POST` | `/tasks/{taskId}/complete` | Mark a task as done |
+
+The pages in this section are generated from [`openapi.json`](https://github.com/tasklist/tasklist-api/blob/main/openapi.json).

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="40" viewBox="0 0 160 40" role="img" aria-label="Tasklist">
+  <rect x="2" y="8" width="24" height="24" rx="6" fill="#0F766E"/>
+  <path d="M8 20 l5 5 l9 -10" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="34" y="27" font-family="Inter, Helvetica, Arial, sans-serif" font-size="20" font-weight="600" fill="#134E4A">Tasklist</text>
+</svg>

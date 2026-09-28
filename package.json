@@ -1,0 +1,18 @@
+{
+  "name": "tasklist-api",
+  "version": "1.4.2",
+  "description": "A small task-list API: lists, tasks, due dates and completion.",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "license": "MIT"
+}

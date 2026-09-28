@@ -1,0 +1,44 @@
+---
+title: "Quickstart"
+description: "Create a list, add a task and complete it."
+---
+
+<Steps>
+  <Step title="Get a token">
+    Create an API token from the account settings page, or use any non-empty string against a local server. Export it so the examples below can use it:
+
+    ```bash
+    export TASKLIST_TOKEN="your-token"
+    ```
+  </Step>
+  <Step title="Create a list">
+    ```bash
+    curl -X POST https://api.tasklist.example/lists \
+      -H "Authorization: Bearer $TASKLIST_TOKEN" \
+      -H "Content-Type: application/json" \
+      -d '{"name": "Launch checklist"}'
+    ```
+
+    The response is the new list, including its `id`. Keep it for the next step.
+  </Step>
+  <Step title="Add a task">
+    ```bash
+    curl -X POST https://api.tasklist.example/tasks \
+      -H "Authorization: Bearer $TASKLIST_TOKEN" \
+      -H "Content-Type: application/json" \
+      -d '{"listId": "lst_...", "title": "Write release notes", "dueDate": "2026-01-20"}'
+    ```
+  </Step>
+  <Step title="Complete it">
+    ```bash
+    curl -X POST https://api.tasklist.example/tasks/tsk_.../complete \
+      -H "Authorization: Bearer $TASKLIST_TOKEN"
+    ```
+
+    The task comes back with `status` set to `done` and a `completedAt` timestamp.
+  </Step>
+</Steps>
+
+<Tip>
+Filter tasks with `GET /tasks?listId=lst_...&status=open` to see what is still outstanding in a list.
+</Tip>
